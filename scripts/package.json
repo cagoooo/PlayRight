@@ -1,0 +1,14 @@
+{
+  "name": "playright-asset-tools",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "本機一次性生成 favicon 全套 / app icon / OG 社群預覽圖（@napi-rs/canvas + 微軟正黑體，中文零方框）",
+  "scripts": {
+    "gen": "node generate-assets.mjs"
+  },
+  "devDependencies": {
+    "@napi-rs/canvas": "^0.1.61",
+    "png-to-ico": "^2.1.8"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Playwright × Webwright — AI Agent 的 Web 技能雙引擎",
+  "short_name": "Playwright×Webwright",
+  "description": "一頁讀懂 Playwright 與 Webwright，讓你的 AI Agent 看得懂、做得到、任務完成有回報！",
+  "lang": "zh-Hant",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#161a2e",
+  "theme_color": "#2563eb",
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-192-maskable.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "assets/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

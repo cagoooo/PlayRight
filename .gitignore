@@ -1,6 +1,9 @@
 # 本地預覽設定（Claude Preview）
 .claude/
 
+# 資產生成工具的相依套件（產出的圖檔仍要 commit）
+scripts/node_modules/
+
 # OS / 編輯器雜物
 .DS_Store
 Thumbs.db

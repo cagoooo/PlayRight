@@ -7,17 +7,38 @@
   <meta name="description" content="一頁讀懂 Playwright 與 Webwright —— 讓 AI Agent 看得懂、做得到、任務完成有回報的 Web 技能雙引擎。含自動填表、公文歸檔等真實自動化情境。" />
   <meta name="author" content="阿凱老師" />
 
-  <!-- Open Graph / 社群分享 -->
+  <!-- Open Graph / FB / LINE 社群分享 -->
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cagoooo.github.io/PlayRight/" />
   <meta property="og:title" content="Playwright × Webwright｜AI Agent 的 Web 技能雙引擎" />
   <meta property="og:description" content="讓你的 AI Agent 看得懂、做得到、任務完成有回報！一頁讀懂兩大網頁自動化關鍵字。" />
+  <meta property="og:image" content="https://cagoooo.github.io/PlayRight/og-preview.png?v=2026.06.04-1" />
+  <meta property="og:image:secure_url" content="https://cagoooo.github.io/PlayRight/og-preview.png?v=2026.06.04-1" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:alt" content="Playwright × Webwright — AI Agent 的 Web 技能雙引擎" />
   <meta property="og:locale" content="zh_TW" />
+  <meta property="og:site_name" content="Playwright × Webwright" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Playwright × Webwright｜AI Agent 的 Web 技能雙引擎" />
+  <meta name="twitter:description" content="讓你的 AI Agent 看得懂、做得到、任務完成有回報！一頁讀懂兩大網頁自動化關鍵字。" />
+  <meta name="twitter:image" content="https://cagoooo.github.io/PlayRight/og-preview.png?v=2026.06.04-1" />
+  <link rel="canonical" href="https://cagoooo.github.io/PlayRight/" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐿️</text></svg>" />
+  <!-- Favicon / App icon / PWA -->
+  <meta name="theme-color" content="#2563eb" />
+  <link rel="icon" href="./favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+
   <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body>
@@ -412,5 +433,67 @@ await page.locator('button[type="submit"]').click();   // ✅ 表單已送出</c
   </footer>
 
   <script src="./js/main.js"></script>
+
+  <!-- ===== Service Worker 註冊 + 新版本更新通知列 ===== -->
+  <script>
+  (function () {
+    if (!("serviceWorker" in navigator)) return;
+    var APP_VERSION = "2026.06.04-1";   // 與 sw.js 的 BUILD_VERSION 同步（bump-version.ps1 會一起改）
+    var reloaded = false;
+
+    function showBar(waiting) {
+      if (document.getElementById("sw-update-bar")) return;
+      var s = document.createElement("style");
+      s.textContent = '#sw-update-bar{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:9999;display:flex;align-items:center;gap:12px;background:linear-gradient(100deg,#1f2547,#2a1d4a);color:#fff;padding:13px 16px;border-radius:16px;box-shadow:0 18px 44px -12px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.14);font:14.5px "Noto Sans TC",system-ui,sans-serif;max-width:calc(100vw - 28px);animation:swbar .4s cubic-bezier(.2,.7,.3,1)}@keyframes swbar{from{opacity:0;transform:translate(-50%,16px)}to{opacity:1;transform:translate(-50%,0)}}#sw-update-bar button{cursor:pointer;border:none;border-radius:10px;font-weight:700;font:inherit}#sw-go{background:linear-gradient(135deg,#5ee98a,#2563eb);color:#08210f;padding:9px 16px}#sw-x{background:transparent;color:#aeb6d4;padding:7px 9px;font-size:15px}';
+      document.head.appendChild(s);
+      var b = document.createElement("div");
+      b.id = "sw-update-bar";
+      b.setAttribute("role", "status");
+      b.innerHTML = '<span>✦ 網站有新版本可用</span><button id="sw-go">重新整理載入</button><button id="sw-x" aria-label="關閉">✕</button>';
+      document.body.appendChild(b);
+      document.getElementById("sw-x").onclick = function () { b.remove(); };
+      document.getElementById("sw-go").onclick = function () {
+        if (waiting) { waiting.postMessage({ type: "SKIP_WAITING" }); }
+        else { location.reload(); }
+      };
+    }
+
+    navigator.serviceWorker.register("./sw.js", { updateViaCache: "none" }).then(function (reg) {
+      // 已有等待中的新 SW（且非首次安裝）→ 立即提示
+      if (reg.waiting && navigator.serviceWorker.controller) showBar(reg.waiting);
+      reg.addEventListener("updatefound", function () {
+        var nw = reg.installing;
+        if (!nw) return;
+        nw.addEventListener("statechange", function () {
+          // installed + 已有 controller = 更新（非首次安裝）
+          if (nw.state === "installed" && navigator.serviceWorker.controller) showBar(reg.waiting || nw);
+        });
+      });
+      // 每分鐘主動檢查一次有無新版
+      setInterval(function () { reg.update().catch(function () {}); }, 60000);
+    }).catch(function () {});
+
+    // SKIP_WAITING 換手 → 重新整理（旗標防無限迴圈）
+    navigator.serviceWorker.addEventListener("controllerchange", function () {
+      if (reloaded) return;
+      reloaded = true;
+      location.reload();
+    });
+
+    // 備胎：輪詢 version.json（SW 事件沒攔到時也能提示）
+    function checkVer() {
+      fetch("./version.json?t=" + Date.now(), { cache: "no-store" })
+        .then(function (r) { return r.json(); })
+        .then(function (d) { if (d && d.version && d.version !== APP_VERSION) showBar(null); })
+        .catch(function () {});
+    }
+    ["focus", "online", "pageshow"].forEach(function (ev) { window.addEventListener(ev, checkVer); });
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState === "visible") checkVer();
+    });
+    setTimeout(checkVer, 8000);
+    setInterval(checkVer, 180000);
+  })();
+  </script>
 </body>
 </html>
