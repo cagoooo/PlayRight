@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Playwright × Webwright｜AI Agent 的 Web 技能雙引擎</title>
+  <meta name="description" content="一頁讀懂 Playwright 與 Webwright —— 讓 AI Agent 看得懂、做得到、任務完成有回報的 Web 技能雙引擎。含自動填表、公文歸檔等真實自動化情境。" />
+  <meta name="author" content="阿凱老師" />
+
+  <!-- Open Graph / 社群分享 -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Playwright × Webwright｜AI Agent 的 Web 技能雙引擎" />
+  <meta property="og:description" content="讓你的 AI Agent 看得懂、做得到、任務完成有回報！一頁讀懂兩大網頁自動化關鍵字。" />
+  <meta property="og:locale" content="zh_TW" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐿️</text></svg>" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+
+  <!-- ===== 導覽列 ===== -->
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top">
+      <span class="nav__logo">🐿️</span>
+      <span class="nav__title">Playwright <em>×</em> Webwright</span>
+    </a>
+    <nav class="nav__links">
+      <a href="#engines">雙引擎</a>
+      <a href="#versus">VS 對決</a>
+      <a href="#scenarios">應用情境</a>
+      <a href="#flow">任務流程</a>
+      <a href="#story">實作日記</a>
+    </nav>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="top">
+    <div class="hero__bg" aria-hidden="true">
+      <span class="blob blob--green"></span>
+      <span class="blob blob--blue"></span>
+      <span class="blob blob--gold"></span>
+    </div>
+
+    <div class="hero__inner">
+      <p class="hero__eyebrow reveal">AI Agent 的 Web 技能雙引擎</p>
+      <h1 class="hero__title reveal">
+        <span class="grad grad--green">Playwright</span>
+        <span class="hero__times">×</span>
+        <span class="grad grad--blue">Webwright</span>
+      </h1>
+      <p class="hero__lead reveal">
+        讓你的 AI Agent <strong>看得懂</strong>、<strong>做得到</strong>、<strong>任務完成有回報！</strong>
+      </p>
+
+      <div class="hero__badges reveal">
+        <span class="pill pill--green">🎭 控制瀏覽器的自動化工具</span>
+        <span class="pill pill--blue">🤖 AI 驅動的任務代理框架</span>
+      </div>
+
+      <div class="hero__cta reveal">
+        <a class="btn btn--primary" href="#qna">這兩個關鍵字到底是什麼？</a>
+        <a class="btn btn--ghost" href="#story">看真實自動化日記</a>
+      </div>
+    </div>
+
+    <div class="hero__scroll" aria-hidden="true">
+      <span></span>向下捲動
+    </div>
+  </section>
+
+  <!-- ===== 小問答 ===== -->
+  <section class="qna" id="qna">
+    <div class="container">
+      <div class="qna__grid">
+        <div class="bubble bubble--ask reveal">
+          <div class="bubble__who">🧒 小問（Xiaoer）的提問</div>
+          <p>最近在 AI Agent 的討論區裡，常看到 <b>Playwright</b> 跟 <b>Webwright</b> 這兩個字。</p>
+          <p>它們到底是什麼？是 <b>Skills 技能</b>嗎？有什麼應用情境？又有什麼特別功能？</p>
+        </div>
+
+        <div class="bubble bubble--answer reveal">
+          <div class="bubble__who">💡 一句話先講清楚</div>
+          <p><b class="t-green">Playwright</b> 是「控制瀏覽器的自動化工具」，讓 AI Agent 能像人一樣操作網頁。</p>
+          <p><b class="t-blue">Webwright</b> 是 Microsoft Research 提出的框架，讓 AI Agent 用終端機寫 Playwright 程式來完成網頁任務。</p>
+          <p class="bubble__note">它們本身不一定等於 Skills，但很常被包裝成 Agent 的「網頁操作技能」。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 雙引擎 ===== -->
+  <section class="engines" id="engines">
+    <div class="container">
+      <h2 class="section-title reveal">兩顆引擎，<span class="t-grad">各司其職</span></h2>
+      <p class="section-sub reveal">一個負責「動手操作」，一個負責「動腦規劃」——合起來才是完整的 Web Agent。</p>
+
+      <div class="engines__grid">
+        <!-- Playwright -->
+        <article class="engine engine--green reveal">
+          <div class="engine__head">
+            <span class="engine__no">01</span>
+            <div>
+              <h3 class="engine__name">🎭 Playwright</h3>
+              <p class="engine__tag">控制瀏覽器的自動化工具</p>
+            </div>
+          </div>
+          <p class="engine__desc">由 Microsoft 開發的開源自動化框架，支援多瀏覽器操作。</p>
+
+          <div class="chips">
+            <span class="chip">Chromium</span>
+            <span class="chip">Firefox</span>
+            <span class="chip">WebKit</span>
+          </div>
+
+          <h4 class="engine__h">主要應用情境</h4>
+          <ul class="ticks ticks--green">
+            <li>網頁自動化測試</li>
+            <li>爬蟲資料擷取</li>
+            <li>自動化表單填寫</li>
+            <li>UI 自動化任務</li>
+            <li>跨瀏覽器相容性測試</li>
+          </ul>
+
+          <h4 class="engine__h">特色功能</h4>
+          <ul class="ticks ticks--green">
+            <li>多瀏覽器支援</li>
+            <li>自動等待（Auto-wait）</li>
+            <li>強大定位能力（Locator）</li>
+            <li>網路請求攔截與模擬</li>
+            <li>並行測試與分頁管理</li>
+            <li>支援多語言：Python / TypeScript / .NET / Java</li>
+          </ul>
+        </article>
+
+        <!-- Webwright -->
+        <article class="engine engine--blue reveal">
+          <div class="engine__head">
+            <span class="engine__no">02</span>
+            <div>
+              <h3 class="engine__name">🤖 Webwright</h3>
+              <p class="engine__tag">AI 驅動的瀏覽器任務代理框架</p>
+            </div>
+          </div>
+          <p class="engine__desc">Microsoft Research 提出的創新框架，讓 AI Agent 能理解網頁並完成複雜任務。</p>
+
+          <div class="chips">
+            <span class="chip">自然語言</span>
+            <span class="chip">任務規劃</span>
+            <span class="chip">自動修正</span>
+          </div>
+
+          <h4 class="engine__h">主要應用情境</h4>
+          <ul class="ticks ticks--blue">
+            <li>自然語言 → 頁面操作</li>
+            <li>AI 自動化任務執行</li>
+            <li>資訊擷取與自動化</li>
+            <li>AI Agent 網頁技能擴充</li>
+            <li>企業內部流程自動化</li>
+          </ul>
+
+          <h4 class="engine__h">特色功能</h4>
+          <ul class="ticks ticks--blue">
+            <li>AI 自然語言理解任務</li>
+            <li>自動生成 Playwright 程式碼</li>
+            <li>任務規劃與執行</li>
+            <li>任務執行回饋與自動修正</li>
+            <li>可擴充為 Agent 技能模組</li>
+          </ul>
+        </article>
+      </div>
+
+      <!-- 搭配說明 -->
+      <div class="combo reveal">
+        <div class="combo__icon">🧩</div>
+        <div class="combo__text">
+          <h4>當 Playwright 搭配 Webwright</h4>
+          <p>
+            <b class="t-green">Playwright</b> 負責「操作網頁」、<b class="t-blue">Webwright</b> 負責「想與規劃」——
+            任務完成，結果更可靠！
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VS ===== -->
+  <section class="versus" id="versus">
+    <div class="container">
+      <h2 class="section-title section-title--light reveal">一句話分清楚它們的角色</h2>
+
+      <div class="versus__grid">
+        <div class="vs-card vs-card--green reveal">
+          <h3>Playwright</h3>
+          <p class="vs-card__slogan">你操作，我執行</p>
+          <p class="vs-card__desc">給它明確的步驟與選擇器，它一步步精準執行。</p>
+        </div>
+
+        <div class="vs-card__vs reveal" aria-hidden="true">VS</div>
+
+        <div class="vs-card vs-card--blue reveal">
+          <h3>Webwright</h3>
+          <p class="vs-card__slogan">你說需求，AI 幫你完成</p>
+          <p class="vs-card__desc">你用自然語言描述目標，AI 自己拆解步驟並寫程式完成。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 應用情境 ===== -->
+  <section class="scenarios" id="scenarios">
+    <div class="container">
+      <h2 class="section-title reveal">五大<span class="t-grad">應用情境</span></h2>
+      <p class="section-sub reveal">支援這兩個關鍵詞，AI Agent 在網頁世界裡幾乎所向無敵。</p>
+
+      <div class="scenarios__grid">
+        <article class="scenario reveal">
+          <span class="scenario__emoji">🛒</span>
+          <h3>電商分析</h3>
+          <p>商品價格追蹤、庫存監控</p>
+        </article>
+        <article class="scenario reveal">
+          <span class="scenario__emoji">📋</span>
+          <h3>表單自動化</h3>
+          <p>自動填寫、送出與驗證</p>
+        </article>
+        <article class="scenario reveal">
+          <span class="scenario__emoji">🗄️</span>
+          <h3>資料擷取</h3>
+          <p>從網站擷取結構化資料</p>
+        </article>
+        <article class="scenario reveal">
+          <span class="scenario__emoji">🧪</span>
+          <h3>研究與測試</h3>
+          <p>AI 資料實驗、自動化測試</p>
+        </article>
+        <article class="scenario reveal">
+          <span class="scenario__emoji">🏢</span>
+          <h3>企業流程</h3>
+          <p>自動化內部系統與報表生成</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 任務流程 ===== -->
+  <section class="flow" id="flow">
+    <div class="container">
+      <h2 class="section-title reveal">🎬 AI Agent 網頁任務流程</h2>
+      <p class="section-sub reveal">以「幫我找出筆電價格最低的商品」為例，Agent 是這樣完成任務的。</p>
+
+      <ol class="flow__steps">
+        <li class="step reveal">
+          <span class="step__no">1</span>
+          <h3>接收任務</h3>
+          <p>「幫我找出 AI 筆電價格最低的商品！」</p>
+        </li>
+        <li class="step reveal">
+          <span class="step__no">2</span>
+          <h3>分析頁面</h3>
+          <p>理解頁面結構與元素位置</p>
+        </li>
+        <li class="step reveal">
+          <span class="step__no">3</span>
+          <h3>生成步驟 / 程式碼</h3>
+          <p>規劃步驟並生成程式碼</p>
+        </li>
+        <li class="step reveal">
+          <span class="step__no">4</span>
+          <h3>執行操作</h3>
+          <p>執行瀏覽器操作完成任務</p>
+        </li>
+        <li class="step reveal">
+          <span class="step__no">5</span>
+          <h3>回傳結果</h3>
+          <p>回傳結果與摘要，任務完成！✅</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== 阿凱老師實作日記 ===== -->
+  <section class="story" id="story">
+    <div class="container">
+      <div class="story__badge reveal">📓 阿凱老師的自動化實作日記</div>
+      <h2 class="section-title reveal">Playwright 自動化<span class="t-grad">初體驗</span></h2>
+
+      <div class="story__card reveal">
+        <div class="story__win">🎉 超開心！！</div>
+        <p>
+          早上想到要讓 Agent 自動幫我<strong>判斷並填寫</strong>偵測到的、已定義好的 Google 表單欄位。
+          剛剛靠 <b class="t-green">Playwright</b> 加上可隨時再擴充的 <code>profile.json</code> 檔，
+          <strong>已實作成功，超開心！！</strong>
+        </p>
+
+        <div class="story__steps">
+          <div class="ministep"><span>1</span>偵測欄位</div>
+          <div class="ministep"><span>2</span>比對 profile.json 智慧判斷</div>
+          <div class="ministep"><span>3</span>自動填入正確內容並送出</div>
+          <div class="ministep ministep--done"><span>✓</span>實作成功</div>
+        </div>
+      </div>
+
+      <!-- profile.json 展示 -->
+      <div class="code-demo reveal">
+        <div class="code-demo__head">
+          <span class="dots"><i></i><i></i><i></i></span>
+          <span class="code-demo__file">profile.json　·　可隨時擴充的自動填表設定檔</span>
+          <button class="code-demo__copy" type="button" data-copy="profile">複製</button>
+        </div>
+        <pre class="code-demo__body"><code id="profile">{
+  "姓名": {
+    "keys": ["姓名", "name"],
+    "value": "王小明"
+  },
+  "信箱": {
+    "keys": ["信箱", "郵件", "email", "電子郵件"],
+    "value": "xiaoming@example.com"
+  },
+  "學校": {
+    "keys": ["學校", "單位", "服務", "school", "organization"],
+    "value": "○○國小"
+  },
+  "縣市": {
+    "keys": ["縣市"],
+    "value": "桃園市"
+  },
+  "職稱": {
+    "keys": ["職稱", "職位", "職務", "title"],
+    "value": "教師"
+  },
+  "電話": {
+    "keys": ["電話", "手機", "phone", "mobile"],
+    "value": "0912-345-678"
+  },
+  "心得或建議": {
+    "keys": ["心得", "建議", "回饋", "想法", "意見", "feedback", "comment"],
+    "value": "本次研習內容非常充實且實用，講師講解清晰，收穫良多，非常感謝主辦單位的用心安排！"
+  }
+}</code></pre>
+      </div>
+      <p class="code-demo__caption reveal">
+        💡 原理：表單上每個欄位的標題，會去比對 <code>keys</code> 陣列裡的關鍵字；命中就自動填入對應的 <code>value</code>。
+        想多填一個欄位？再加一組就好——<b>不用改程式，只改設定檔</b>。
+      </p>
+
+      <!-- 程式碼片段 -->
+      <div class="code-demo reveal">
+        <div class="code-demo__head">
+          <span class="dots"><i></i><i></i><i></i></span>
+          <span class="code-demo__file">填表的核心三行（概念示意）</span>
+          <button class="code-demo__copy" type="button" data-copy="fill">複製</button>
+        </div>
+        <pre class="code-demo__body"><code id="fill">await page.goto(formUrl);
+await page.locator('input[name="姓名"]').fill(profile["姓名"].value);
+await page.locator('input[name="電子郵件"]').fill(profile["信箱"].value);
+await page.locator('button[type="submit"]').click();   // ✅ 表單已送出</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 下一關：公文歸檔 ===== -->
+  <section class="next" id="next">
+    <div class="container">
+      <div class="next__card reveal">
+        <div class="next__tag">🚀 下一關</div>
+        <h2>煩人的公文歸檔，希望 Playwright 再給我一次驚喜！</h2>
+        <p>
+          如果能把<strong>長官已決行的電子公文</strong>交給 Agent 幫我們點按、自動歸檔……
+          成功的話那真的就太爽了。
+        </p>
+        <p class="next__sigh">
+          慢慢點、慢慢按、慢慢填，真的好累啊——<br />
+          <span class="next__dream">可以自動化、自動好……人生好美妙！！💫</span>
+        </p>
+        <div class="next__progress">
+          <div class="next__bar"><span style="--w:86%"></span></div>
+          <span class="next__pct">自動歸檔中… 86%</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 總結 ===== -->
+  <section class="summary">
+    <div class="container">
+      <div class="summary__star">⭐</div>
+      <h2 class="reveal">總結</h2>
+      <p class="reveal">
+        <b class="t-green">Playwright</b> 讓 AI Agent 能「<b>操作網頁</b>」，
+        <b class="t-blue">Webwright</b> 讓 AI Agent 能「<b>理解並完成任務</b>」。
+      </p>
+      <p class="summary__big reveal">
+        掌握這兩個關鍵詞，<br />讓你的 AI Agent 在網頁世界裡所向無敵 🚀
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-credit">
+    Made with <span class="site-credit__heart" aria-label="愛心">❤️</span> by
+    <a
+      href="https://www.smes.tyc.edu.tw/modules/tadnews/page.php?ncsn=11&nsn=16#a5"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="site-credit__author"
+    >阿凱老師</a>
+    <span class="site-credit__sub">桃園市龍潭區石門國民小學</span>
+  </footer>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>

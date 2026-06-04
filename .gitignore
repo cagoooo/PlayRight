@@ -1,0 +1,8 @@
+# 本地預覽設定（Claude Preview）
+.claude/
+
+# OS / 編輯器雜物
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
