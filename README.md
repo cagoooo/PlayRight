@@ -2,6 +2,8 @@
 
 > 一頁讀懂 **Playwright** 與 **Webwright** —— 讓你的 AI Agent 看得懂、做得到、任務完成有回報！
 
+> 📌 **建置版本：2026.06.04-1**（依據 `version.json`）
+
 一個用純 HTML / CSS / JavaScript 製作的單頁互動式介紹網站，整理了這兩個常在 AI Agent 社群看到的關鍵字，並收錄阿凱老師用 Playwright + `profile.json` 自動填寫 Google 表單的真實實作日記。
 
 ## 🌐 線上看
