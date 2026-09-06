@@ -69,7 +69,7 @@ Playwright × Webwright — AI Agent 的 Web 技能雙引擎｜一頁讀懂兩�
 - Repository：`cagoooo/PlayRight`
 - 可見性：公開
 - 主要技術：CSS
-- 線上入口：未在 GitHub repository metadata 設定
+- 線上入口：<https://cagoooo.github.io/PlayRight/>
 
 ### 可以怎麼應用
 
