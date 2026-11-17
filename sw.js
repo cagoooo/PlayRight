@@ -6,7 +6,7 @@
    每次部署：改 BUILD_VERSION（或跑 scripts/bump-version.ps1），sw.js byte 必變 →
             瀏覽器才會偵測為新版 → install → 進 waiting → 頁面跳「重新整理載入」。
    ========================================================================= */
-const BUILD_VERSION = "2026.06.04-1";
+const BUILD_VERSION = "2026.11.17-1";
 const CACHE = "playright-" + BUILD_VERSION;
 const PRECACHE = [
   "./",
